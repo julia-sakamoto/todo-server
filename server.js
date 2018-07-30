@@ -21,19 +21,21 @@ app.get('/', function(req, res) {
 })
 
 //Get all
-app.get('/api/todos', function(req, res) {
+app.get('/api/todos', function (req, res) {
   Todo.find({}).then((todoItem) => {
     res.json(todoItem)
   })
 })
 
 //Post new signature
-app.post('/api/todos', function(req, res) {
-  Todo.create({
-    title: req.body.Title
-  }).then(todoItem => {
-    res.json(todoItem)
-  })
+app.post('/api/todos', function (req, res) {
+  console.log(req.body)
+
+  // Todo.create({
+  //   title: req.body
+  // }).then(todoItem => {
+  //   res.json(todoItem)
+  // })
 })
 
 //Mongoose connect
