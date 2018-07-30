@@ -27,9 +27,9 @@ app.get('/api/todos', function (req, res) {
   })
 })
 
-//Post new signature
+//Post new todo
 app.post('/api/todos', function (req, res) {
-  Todo.create({ title: req.body.Title })
+  Todo.create({ title: res.body.Title })
 })
 
 //Mongoose connect
