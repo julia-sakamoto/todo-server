@@ -8,14 +8,24 @@ const Todo = require('./models/todo-model.js')
 const app = express()
 const url = 'mongodb://user:passw0rd@ds023303.mlab.com:23303/todolist'
 
+//CORS error fix
+function CORSheaders(res) {
+  res.header("Access-Control-Allow-Headers", "*")
+  res.header('Access-Control-Allow-Credentials', true)
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+}
 
 //Root directory
 app.get('/', function(req, res) {
+  CORSheaders(res)
+
   res.json('success')
 })
 
 //Get all
 app.get('/api/todos', function(req, res) {
+  CORSheaders(res)
+
   Todo.find({}).then((todoItem) => {
     res.json(todoItem)
   })
@@ -23,6 +33,8 @@ app.get('/api/todos', function(req, res) {
 
 //Post new signature
 app.post('/api/todos', function(req, res) {
+  CORSheaders(res)
+
   Todo.create({
     title: req.body.Title
   }).then(todoItem => {
