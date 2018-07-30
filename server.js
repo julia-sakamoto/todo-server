@@ -29,7 +29,7 @@ app.get('/api/todos', function (req, res) {
 
 //Post new todo
 app.post('/api/todos', function (req, res) {
-  Todo.create(req.body, function (err, item) {
+  Todo.create({title: req.body}, function (err, item) {
     if (err)
       return next(err)
     res.json(item)
