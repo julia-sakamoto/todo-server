@@ -3,13 +3,13 @@ const mongoose = require('mongoose')
 let Schema = mongoose.Schema
 
 const todoSchema = new Schema({
-  status: {
-    type: String,
-    default: '・'
-  },
   title: {
     type: String,
     required: true
+  },
+  status: {
+    type: String,
+    default: '・'
   },
   date: {
     type: Date,
