@@ -29,12 +29,7 @@ app.get('/api/todos', function (req, res) {
 
 //Post new signature
 app.post('/api/todos', function (req, res) {
-  console.log(req.body)
-  
   Todo.create({ title: req.body.Title })
-    .then((todoItem) => {
-      res.json(todoItem)
-    })
 })
 
 //Mongoose connect
