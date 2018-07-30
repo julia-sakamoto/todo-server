@@ -23,6 +23,8 @@ app.get('/api/todos', function(req, res) {
 
 //Post new signature
 app.post('/api/todos', function(req, res) {
+  console.log(req.body);
+  
   Todo.create({
     title: req.body.Title
   }).then(todoItem => {
@@ -38,12 +40,9 @@ mongoose.connect(url, function(err, db) {
     console.log('Connection established with ', url)
 })
 
-//fix for the CORS error
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  next()
-})
+//Use bodyparser
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 const port = process.env.PORT || 3000
 app.listen(port)
