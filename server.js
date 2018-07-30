@@ -29,8 +29,11 @@ app.get('/api/todos', function (req, res) {
 
 //Post new todo
 app.post('/api/todos', function (req, res) {
-  res.json(req)
-  // Todo.create({ title: req.body.Title })
+  Todo.create({ title: req.body.Title }, function (err, item) {
+    if (err)
+      return next(err)
+    res.json(item)
+  })
 })
 
 //Mongoose connect
