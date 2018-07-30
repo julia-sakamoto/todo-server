@@ -17,8 +17,7 @@ function CORSheaders(res) {
 
 //Root directory
 app.get('/', function(req, res) {
-  CORSheaders(res)
-
+  res.header("Access-Control-Allow-Headers", "*")
   res.json('success')
 })
 
