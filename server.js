@@ -24,7 +24,7 @@ app.get('/api/todos', function(req, res) {
 //Post new signature
 app.post('/api/todos', function(req, res) {
   Todo.create({
-    title: 'test'
+    title: req.body
   }).then(todoItem => {
     res.json(todoItem)
   })
