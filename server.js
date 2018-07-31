@@ -15,6 +15,10 @@ app.use(function (req, res, next) {
   next()
 })
 
+//Use bodyparser
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 //Root directory
 app.get('/', function(req, res) {
   res.json('success')
@@ -43,10 +47,6 @@ mongoose.connect(url, function(err, db) {
   else
     console.log('Connection established with ', url)
 })
-
-//Use bodyparser
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 
 const port = process.env.PORT || 3000
 app.listen(port)
