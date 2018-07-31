@@ -59,7 +59,7 @@ app.put('/api/todos', function (req, res) {
 
 //Delete todo
 app.delete('/api/todos', function (req, res) {
-  Todo.findOneAndDelete(req.body.id)
+  Todo.findByIdAndRemove(req.body.idNum)
     .then((todoItem) => {
       res.json(todoItem)
     }).catch((err) => {
