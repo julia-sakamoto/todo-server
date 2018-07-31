@@ -28,6 +28,9 @@ app.get('/', function(req, res) {
 app.get('/api/todos', function (req, res) {
   Todo.find({}).then((todoItem) => {
     res.json(todoItem)
+  }).catch((err) => {
+    console.log('An error occured in GET, look into the json for more info.')
+    res.json(err)
   })
 })
 
@@ -36,8 +39,32 @@ app.post('/api/todos', function (req, res) {
   Todo.create({title: req.body.Title}).then((todoItem) => {
     res.json(todoItem)
   }).catch((err) => {
+    console.log('An error occured in POST, look into the json for more info.')
     res.json(err)
   })
+})
+
+//Update status
+app.put('/api/todos', function (req, res) {
+  Todo.findByIdAndUpdate(req.params.id, {
+    status: req.body.Done
+  }).then((todoItem) => {
+    res.json(todoItem)
+  }).catch((err) => {
+    console.log('An error occured in PUT, look into the json for more info.')
+    res.json(err)
+  })
+})
+
+//Delete todo
+app.delete('api/todos', function (req, res) {
+  Todo.findByIdAndRemove(req.params.id)
+    .then((todoItem) => {
+      res.json(todoItem)
+    }).catch((err) => {
+      console.log('An error occured in DELETE, look into the json for more info.')
+      res.json(err)
+    })
 })
 
 //Mongoose connect
