@@ -47,10 +47,8 @@ app.post('/api/todos', function (req, res) {
 
 //Update status
 app.put('/api/todos', function (req, res) {
-  Todo.findByIdAndUpdate(req.params.id, {
-    status: req.body.Done
-  }, { 
-    new: true
+  Todo.findOneAndUpdate(req.params.id, {
+    status: '✓'
   }).then((todoItem) => {
     res.json(todoItem)
   }).catch((err) => {
