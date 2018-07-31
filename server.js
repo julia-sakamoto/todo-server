@@ -47,7 +47,7 @@ app.post('/api/todos', function (req, res) {
 
 //Update status
 app.put('/api/todos', function (req, res) {
-  Todo.findOneAndUpdate({id: req.body.id}, {
+  Todo.findOneAndUpdate(req.body.idNum, {
     status: '✓'
   }, callback).then((todoItem) => {
     res.json(todoItem)
