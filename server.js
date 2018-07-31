@@ -47,7 +47,7 @@ app.post('/api/todos', function (req, res) {
 
 //Update status
 app.put('/api/todos', function (req, res) {
-  Todo.findOneAndUpdate(req.params.id, {
+  Todo.findOneAndUpdate(req.body._id, {
     status: '✓'
   }).then((todoItem) => {
     res.json(todoItem)
@@ -59,7 +59,7 @@ app.put('/api/todos', function (req, res) {
 
 //Delete todo
 app.delete('/api/todos', function (req, res) {
-  Todo.findOneAndDelete(req.params.id)
+  Todo.findOneAndDelete(req.body._id)
     .then((todoItem) => {
       res.json(todoItem)
     }).catch((err) => {
