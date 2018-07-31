@@ -33,7 +33,7 @@ app.get('/api/todos', function (req, res) {
 
 //Post new todo
 app.post('/api/todos', function (req, res) {
-  Todo.create({title: req.body}).then((todoItem) => {
+  Todo.create({title: req.body.Title}).then((todoItem) => {
     res.json(todoItem)
   }).catch((err) => {
     res.json(err)
