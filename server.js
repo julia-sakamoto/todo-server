@@ -11,7 +11,8 @@ const url = 'mongodb://user:passw0rd@ds023303.mlab.com:23303/todolist'
 //CORS error fix
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"),
+  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
   next()
 })
 
