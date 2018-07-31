@@ -49,7 +49,7 @@ app.post('/api/todos', function (req, res) {
 app.put('/api/todos', function (req, res) {
   Todo.findOneAndUpdate(req.body.idNum, {
     status: '✓'
-  }, callback).then((todoItem) => {
+  }).then((todoItem) => {
     res.json(todoItem)
   }).catch((err) => {
     console.log('An error occured in PUT, look into the json for more info.')
